@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Login | Association of Geographers</title><link rel="stylesheet" href="style.css"></head>
+<body class="admin-body">
+<div class="admin-wrap"><div class="admin-box"><img src="logo.jpg" alt="Association logo" class="admin-logo"><h1>Admin Login</h1><p>Association of Geographers</p><form id="loginForm"><input id="email" type="email" placeholder="Admin email" required><input id="password" type="password" placeholder="Password" required><button class="btn primary" type="submit">Login</button><p id="loginMsg" class="form-msg"></p></form><a href="index.html">← Back to website</a></div></div>
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
+import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
+import { firebaseConfig } from './firebase-config.js';
+const app=initializeApp(firebaseConfig),auth=getAuth(app);
+const form=document.getElementById('loginForm'),msg=document.getElementById('loginMsg');
+form.addEventListener('submit',async e=>{e.preventDefault();msg.textContent='Signing in...';try{await signInWithEmailAndPassword(auth,email.value.trim(),password.value);location.href='admin-dashboard.html';}catch(err){msg.textContent='Login failed. Check your email and password.';}});
+</script></body></html>
